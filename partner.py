@@ -1,7 +1,12 @@
 import lmstudio as lms
+from dotenv import load_dotenv
+
+load_dotenv()
+
+#lms.configure_default_client("http://10.2.0.2:1234")
 
 def respond(text, app, box):
-    
+
     model = lms.llm('deepseek/deepseek-r1-0528-qwen3-8b')
     chat = lms.Chat(
         """
