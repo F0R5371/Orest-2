@@ -116,14 +116,16 @@ class Orest():
         return self.sections[section]
     
     def make_entry(self, entry_box, response):
+
+        entry = entry_box.get()
         
-        user_chat = "用戶：" + entry_box.get() + "\n\n"
+        user_chat = "用戶：" + entry + "\n\n"
         self.add_chat_text(user_chat, response)
         entry_box.delete(0, "end")
         
         self.get_section("Vocab").get_vocab()
-        
-        partner.respond(entry_box.get(), self, response)
+
+        partner.respond(entry, self, response)
         
         
 class Chat(CTkFrame):
