@@ -2,7 +2,10 @@ import os
 from groq import Groq
 from dotenv import load_dotenv
 
+import nltk
+
 load_dotenv()
+
 
 def respond(text, app, box):
 
@@ -65,6 +68,24 @@ def respond(text, app, box):
             Code should NOT be generated.
             Math should NOT be generated.
         </example2>
+        
+        <example3>
+            學生：你可以幫我聽懂中國文化更多的嗎?
+            符道人：當然可以！
+                - 食物：。。。
+                    - 餃子
+                - 節日：。。。
+                    - 春節
+                - 習慣：。。。
+                
+            Sometimes a student will ask for help in understanding something, your natural response may be to respond in a series of lists depicting
+            each of the important sections of Chinese culture.
+            
+            While this isn't incorrect, when people talk and have a conversation in person they do not use things like bullet points. Everything
+            you write should be as if you are a talking in-person with a student, not as if you are talking online or in a text message.
+            
+            You do not use bullet points or lists when talking about things, just describe things using sentences.
+        </example3>
 
     """
 
@@ -87,3 +108,13 @@ def respond(text, app, box):
     app.add_chat_text("輔導：", box)
 
     app.add_chat_text(chat.choices[0].message.content + "\n\n", box)
+    
+    
+def test():
+    
+    print("Worked")
+    
+    
+test()
+    
+    

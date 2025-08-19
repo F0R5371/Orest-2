@@ -81,6 +81,7 @@ class Orest():
 
         self.sections["Chat"] = Chat(self, main)
         self.sections["Vocab"] = Vocab(main) 
+        self.sections["Dictionary"] = Dictionary(main)
         
         for val in self.sections.values():
             val.grid(row = 0, column = 0, sticky = "NSEW")
