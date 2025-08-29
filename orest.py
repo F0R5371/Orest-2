@@ -70,7 +70,6 @@ class Orest():
         )
         settings_button.grid(row = 0, column = 4)
 
-
         # Sections ----------------------------------------------
 
         main = CTkFrame(root)
@@ -239,7 +238,7 @@ class Vocab(CTkFrame):
         buttons.grid_columnconfigure((0, 2), weight = 1)
         buttons.grid_columnconfigure(1, weight = 15)
         
-        button = CTkButton(buttons, text = "Import")
+        button = CTkButton(buttons, text = "Import", command = lambda : self.import_vocab())
         button.grid(row = 0, column = 0, sticky = "w")
         
         title = CTkLabel(buttons, text = "")
@@ -272,6 +271,54 @@ class Vocab(CTkFrame):
             vocab += "\n\n"
 
         return vocab
+    
+    def import_vocab(self):
+        
+        # New window
+        import_win = CTkToplevel()
+        import_win.title("Import vocab")
+        import_win.geometry("800x300")
+        
+        # Padding
+        padding = CTkFrame(import_win)
+        padding.pack(padx = (15, 15), pady = (15, 15), fill = 'both', expand = True)
+        
+        padding.grid_columnconfigure(0, weight = 1)
+        padding.grid_rowconfigure(0, weight = 1)
+        
+        # Main frame
+        main = CTkFrame(padding)
+        main.grid(row = 0, column = 0, sticky = "NSEW", pady = (0, 15))
+        
+        main.grid_rowconfigure(0, weight = 1)
+        main.grid_columnconfigure((0, 1), weight = 1)
+        
+        # Left part of main frame
+        left = CTkFrame(main)
+        left.grid(row = 0, column = 0, sticky = "NSEW", padx = (5, 5), pady = (5, 5))
+        
+        path_box = CTkEntry(left, height = 30)
+        path_box.pack(fill = 'x')
+        
+        # Right part of main frame
+        right = CTkFrame(main)
+        right.grid(row = 0, column = 1, sticky = "NSEW", padx = (5, 5), pady = (5, 5))
+        
+        # HSK Buttons
+        HSKS = 7
+        
+        hsk_buttons = CTkFrame(right, height = 30)
+        hsk_buttons.pack(fill = 'x')
+        
+        hsk_buttons.grid_columnconfigure(tuple([i for i in range(HSKS)]), weight = 1)
+        
+        for i in range(HSKS):
+            button = CTkButton(hsk_buttons, width = 15, height = 15, text = f"{i + 1}")
+            button.grid(row = 0, column = i, sticky = "NSEW", padx = (5, 5))
+        
+        # Bottom import button
+        import_button = CTkButton(padding)
+        import_button.grid(row = 1, column = 0, sticky = "NSEW")
         
         
 class Notes(CTkFrame):

@@ -110,11 +110,3 @@ def respond(text, app, box):
     app.add_chat_text(chat.choices[0].message.content + "\n\n", box)
     
     
-def test():
-    
-    print("Worked")
-    
-    
-test()
-    
-    
